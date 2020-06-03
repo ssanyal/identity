@@ -1,0 +1,32 @@
+{
+    "connection" :{
+    "host": "localhost",
+    "port" : 4000
+    },
+    "users" :[
+        {   "username": "john",
+            "password": "$2b$10$m4018EQL7bFhK0RSSnmztOAcGzGWDXFQ8oTyW1Ek/5RzAk8VdJdPa", 
+            "name": "John Doe",
+            "id": "2133d32a"
+        },
+        {
+            "username" : "mitch",
+            "password" : "$2b$10$H09AflsQn6i/aUi5s.hoZ.MQw9K.tA2cPCRGtxXhF8iNZHVnevAiG",  
+            "name": "Mithcel Johnson",
+            "id": "2133d32b"
+        }
+    ], 
+    "dbconfig": {
+        "user": "user-master",
+        "password": "Boeing702#",
+        "port": 5432,
+        "host": "localhost",
+        "database": "users",
+        "attach": "onPreHandler", 
+        "detach": "tail",
+        "idleTimeoutMillis": 30000,
+        "connectionTimeoutMillis": 2000,
+        "ssl": false
+      },
+    "logfile" : "../log/app.log"
+}

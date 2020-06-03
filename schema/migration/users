@@ -1,0 +1,48 @@
+-- Table: public.users
+
+-- DROP TABLE public.users;
+
+CREATE TABLE public.users
+(
+    userid character varying(80) COLLATE pg_catalog."default" NOT NULL,
+    uuid uuid NOT NULL,
+    firstname character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    lastname character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    email character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    created_at date NOT NULL,
+    updated_at date NOT NULL,
+    CONSTRAINT users_pkey PRIMARY KEY (uuid),
+    CONSTRAINT users_email_key UNIQUE (email),
+    CONSTRAINT users_userid_key UNIQUE (userid)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.users
+    OWNER to "user-master";
+-- Index: users_email
+
+-- DROP INDEX public.users_email;
+
+CREATE UNIQUE INDEX users_email
+    ON public.users USING btree
+    (email COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
+-- Index: users_userid
+
+-- DROP INDEX public.users_userid;
+
+CREATE INDEX users_userid
+    ON public.users USING btree
+    (userid COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
+-- Index: users_uuid
+
+-- DROP INDEX public.users_uuid;
+
+CREATE UNIQUE INDEX users_uuid
+    ON public.users USING btree
+    (uuid ASC NULLS LAST)
+    TABLESPACE pg_default;
